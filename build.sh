@@ -1,0 +1,1 @@
+docker build -t linsir/speedtest_lite:latest .
