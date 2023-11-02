@@ -4,7 +4,7 @@ WORKDIR /usr/local/speedtest_lite
 
 ENV PATH=$PATH:/usr/local/openresty/luajit/bin:/usr/local/openresty/nginx/sbin:/usr/local/openresty/bin
 
-RUN mkdir -p /usr/local/speedtest_lite/runtime \
+RUN mkdir -p /usr/local/speedtest_lite/{runtime,logs} \
     && ln -sf /dev/stdout /usr/local/speedtest_lite/logs/access.log \
     && ln -sf /dev/stderr /usr/local/speedtest_lite/logs/error.log
 
