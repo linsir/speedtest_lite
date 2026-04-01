@@ -8,6 +8,7 @@
   const SPEED_STOPS = [0, 10, 25, 50, 100, 200, 400, 600, 800, 1000];
   const NEEDLE_ANGLE_STOPS = [-122, -101, -77, -51, -27, -6, 18, 44, 71, 99];
   const GAUGE_MAX_BANDWIDTH = 1000;
+  const GAUGE_PROGRESS_TRIM = 1.165;
   const SPEED_HISTORY_KEY = "speedtest_lite_history_v1";
   const SPEED_HISTORY_LIMIT = 5;
 
@@ -67,6 +68,13 @@
     const maxAngle = NEEDLE_ANGLE_STOPS[NEEDLE_ANGLE_STOPS.length - 1];
     const safeAngle = clamp(Number(angle) || minAngle, minAngle, maxAngle);
     return ((safeAngle - minAngle) / (maxAngle - minAngle)) * 100;
+  }
+
+  function getGaugeArcLength(circumference) {
+    const minAngle = NEEDLE_ANGLE_STOPS[0];
+    const maxAngle = NEEDLE_ANGLE_STOPS[NEEDLE_ANGLE_STOPS.length - 1];
+    const angleSpan = Math.abs(maxAngle - minAngle);
+    return (circumference * angleSpan) / 360;
   }
 
   function formatHistoryTime(timestamp) {
@@ -214,8 +222,10 @@
     setValue(speed) {
       const angle = speedToNeedleAngle(speed);
       const progress = angleToProgressPercent(angle);
-      const dashOffset = this.circumference - (this.circumference * progress) / 100;
-      this.stroke.style.strokeDasharray = `${this.circumference}`;
+      const arcLength = getGaugeArcLength(this.circumference);
+      const effectiveProgress = clamp(progress * GAUGE_PROGRESS_TRIM, 0, 100);
+      const dashOffset = arcLength - (arcLength * effectiveProgress) / 100;
+      this.stroke.style.strokeDasharray = `${arcLength} ${this.circumference}`;
       this.stroke.style.strokeDashoffset = String(dashOffset);
       this.needle.style.transform = `rotate(${angle}deg)`;
       this.number.textContent = fmt(speed, 1);
