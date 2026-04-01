@@ -1051,6 +1051,25 @@ body:not(.store-data) .store-data_button svg {
     font-size: 0.88rem;
 }
 
+.site-footer-main {
+    max-width: 600px;
+    margin: 1.15rem auto 0 auto;
+    padding: 0.95rem 0 1.2rem 0;
+    border-top: 1px solid rgba(96, 130, 162, 0.35);
+    color: #a4bed4;
+    font-size: 0.88rem;
+    line-height: 1.8;
+    text-align: center;
+}
+.site-footer-main a,
+.site-footer-main a:visited {
+    color: #a4bed4;
+    text-decoration: none;
+}
+.desktop .site-footer-main a:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 680px) {
     .speed-history_item {
         flex-direction: column;

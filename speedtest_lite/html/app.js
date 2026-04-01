@@ -165,6 +165,11 @@
       '      </div>',
       '    </section>',
       '',
+      '    <footer class="site-footer-main">',
+      '      <div>Powered by <a href="https://openresty.org/" target="_blank" rel="noopener noreferrer">OpenResty</a></div>',
+      `      <div>Copyright &copy; ${new Date().getFullYear()} Speedtest Lite</div>`,
+      '    </footer>',
+      '',
       '  </div>',
       '</main>'
     ].join("\n");
