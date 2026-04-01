@@ -1,19 +1,21 @@
-
-![LibreSpeed Logo](https://github.com/librespeed/speedtest/blob/master/.logo/logo3.png?raw=true)
-
-# LibreSpeed
-
-
-
-- 前端： [LibreSpeed](https://github.com/librespeed/speedtest)
-- 后端： [OpenResty](https://github.com/openresty/openresty)
-
-
+# Speedtest Lite
 
 ## 截图
 
-![Screenshot](https://speedtest.fdossena.com/mpot_v6.gif)
+### Speed Test
 
+![Speedtest Lite Screenshot](images/snapshot.png)
+
+### Ping Test
+
+![Ping Test Screenshot](images/ping-test.png)
+
+当前界面包含以下能力：
+
+- Speed Test 主页面
+- Ping Test 页面
+- 最近 5 次测速峰值历史记录
+- 本地历史清空按钮
 
 ## 使用
 
